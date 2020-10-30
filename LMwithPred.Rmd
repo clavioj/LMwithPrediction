@@ -10,11 +10,36 @@ knitr::opts_chunk$set(echo = TRUE)
 ```
 
 ## Introduction
-This is the linear model with prediction problem.
- Preditct strength scores using data from the following web site.
+This is the linear model with prediction problem.  
+Predict strength scores using data from the following web site.  
  
 ```{r}
 data <- read.csv(file="http://onlinestatbook.com/case_studies_rvls/physical_strength/data.txt", sep="", header=TRUE)
 ```
  
- 
+```{r include=FALSE}
+require(tidyverse)
+require(tigerstats)
+require(rgl)
+require(knitr)
+require(ggplot)
+```
+
+```{r}
+plot(SIMS~ARM,data=data)
+
+```
+
+```{r}
+basicNN <- ggplot(data,aes(y=SIMS,x=ARM))
+```
+
+
+```{r}
+basicNN + geom_point() + geom_smooth(method=lm)
+```
+
+```{r}
+model.1 <- lm(SIMS~ARM,data=data)
+summary.lm(model.1)
+```
