@@ -12,6 +12,12 @@ knitr::opts_chunk$set(echo = TRUE)
 ## Introduction
 This is the linear model with prediction problem.  
 Predict strength scores using data from the following web site.  
+
+$H_0$: The Null Hypothesis is that there is no difference between arms and grip strength.  
+
+$H_A$: The Alternative Hypothesis is that there is a difference between arms and grip strength for overall strength.
+
+
  
 ```{r}
 data <- read.csv(file="http://onlinestatbook.com/case_studies_rvls/physical_strength/data.txt", sep="", header=TRUE)
@@ -25,10 +31,12 @@ require(knitr)
 require(ggplot)
 ```
 
+## Arm
+
 ```{r}
 plot(SIMS~ARM,data=data)
-
 ```
+
 
 ```{r}
 basicNN <- ggplot(data,aes(y=SIMS,x=ARM))
@@ -38,8 +46,50 @@ basicNN <- ggplot(data,aes(y=SIMS,x=ARM))
 ```{r}
 basicNN + geom_point() + geom_smooth(method=lm)
 ```
-
 ```{r}
 model.1 <- lm(SIMS~ARM,data=data)
 summary.lm(model.1)
+New=data.frame (GRIP=94, ARM=88)
+predict.lm(model.1,New,interval="prediction")
 ```
+P-value in chart states its 0.00000000000000022.  
+
+
+## Grip
+
+
+```{r}
+plot (SIMS~GRIP,data=data)
+```
+
+
+```{r}
+basicNN <- ggplot(data,aes(y=SIMS,x=GRIP))
+```
+
+
+```{r}
+basicNN + geom_point() + geom_smooth(method=lm)
+```
+
+```{r}
+model.2 <- lm(SIMS~GRIP,data=data)
+summary.lm(model.2)
+predict.lm(model.2,New,interval="prediction")
+```
+
+```{r}
+model.3 <- lm(SIMS~ARM+GRIP,data=data)
+summary.lm(model.3)
+predict.lm(model.3,New,interval="prediction")
+```
+
+
+```{r}
+anova(model.1,model.3)
+```
+
+
+## Conclusion
+
+With the p-value at 0.00000000000000022, we therefore reject the Null Hypothesis and accept the Alternative Hypothesis. The guys with the stronger arms in general are better on the physically demanding parts of the job compared to people with high grip strength. 
