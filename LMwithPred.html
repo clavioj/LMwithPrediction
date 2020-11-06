@@ -458,7 +458,7 @@ summary.lm(model.1)</code></pre>
 predict.lm(model.1,New,interval=&quot;prediction&quot;)</code></pre>
 <pre><code>##         fit       lwr      upr
 ## 1 0.7063836 -1.726209 3.138977</code></pre>
-<p>P-value in chart states its 0.00000000000000022.</p>
+<p>In the data the arm strength estimate in adjusted R-Squared is 0.467.</p>
 </div>
 <div id="grip" class="section level2">
 <h2>Grip</h2>
@@ -491,6 +491,7 @@ summary.lm(model.2)</code></pre>
 <pre class="r"><code>predict.lm(model.2,New,interval=&quot;prediction&quot;)</code></pre>
 <pre><code>##          fit       lwr      upr
 ## 1 -0.5361543 -3.107961 2.035652</code></pre>
+<p>The adjusted R-Squared in grip strength is 0.4053.</p>
 <pre class="r"><code>model.3 &lt;- lm(SIMS~ARM+GRIP,data=data)
 summary.lm(model.3)</code></pre>
 <pre><code>## 
@@ -528,7 +529,7 @@ summary.lm(model.3)</code></pre>
 </div>
 <div id="conclusion" class="section level2">
 <h2>Conclusion</h2>
-<p>With the p-value at 0.00000000000000022, we therefore reject the Null Hypothesis and accept the Alternative Hypothesis. The guys with the stronger arms in general are better on the physically demanding parts of the job compared to people with high grip strength.</p>
+<p>The adjusted r-squared for Arm strength is at 0.467 and for grip is at 0.4053. With this data, we therefore reject the Null Hypothesis and accept the Alternative Hypothesis. The guys with the stronger arms in general are better on the physically demanding parts of the job compared to people with high grip strength.</p>
 </div>
 
 

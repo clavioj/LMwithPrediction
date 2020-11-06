@@ -52,7 +52,8 @@ summary.lm(model.1)
 New=data.frame (GRIP=94, ARM=88)
 predict.lm(model.1,New,interval="prediction")
 ```
-P-value in chart states its 0.00000000000000022.  
+
+In the data the arm strength estimate in adjusted R-Squared is 0.467.  
 
 
 ## Grip
@@ -78,6 +79,9 @@ summary.lm(model.2)
 predict.lm(model.2,New,interval="prediction")
 ```
 
+The adjusted R-Squared in grip strength is 0.4053.  
+
+
 ```{r}
 model.3 <- lm(SIMS~ARM+GRIP,data=data)
 summary.lm(model.3)
@@ -92,4 +96,4 @@ anova(model.1,model.3)
 
 ## Conclusion
 
-With the p-value at 0.00000000000000022, we therefore reject the Null Hypothesis and accept the Alternative Hypothesis. The guys with the stronger arms in general are better on the physically demanding parts of the job compared to people with high grip strength. 
+The adjusted r-squared for Arm strength is at 0.467 and for grip is at 0.4053. With this data, we therefore reject the Null Hypothesis and accept the Alternative Hypothesis. The guys with the stronger arms in general are better on the physically demanding parts of the job compared to people with high grip strength. 
